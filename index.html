@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赛博电子上香</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        .incense-container {
+            position: relative;
+            margin: 50px auto;
+            width: 200px;
+            height: 300px;
+        }
+        .incense-stick {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            height: 200px;
+            background-color: #8B4513;
+            transform: translateX(-50%);
+        }
+        .incense-smoke {
+            position: absolute;
+            bottom: 200px;
+            left: 50%;
+            width: 10px;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(200, 200, 200, 0.8), rgba(255, 255, 255, 0));
+            border-radius: 50%;
+            animation: smoke 5s infinite ease-out;
+            transform: translateX(-50%);
+        }
+        @keyframes smoke {
+            0% {
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-50%) scale(2);
+                opacity: 0;
+            }
+        }
+        .message-box {
+            margin-top: 30px;
+        }
+        textarea {
+            width: 300px;
+            height: 100px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #A0522D;
+        }
+    </style>
+</head>
+<body>
+    <h1>赛博电子上香</h1>
+    <div class="incense-container">
+        <div class="incense-stick"></div>
+        <div class="incense-smoke"></div>
+    </div>
+    <div class="message-box">
+        <textarea id="message" placeholder="在此输入您的悼念或祝福..."></textarea>
+        <br>
+        <button onclick="submitMessage()">上香并提交</button>
+    </div>
+
+    <script>
+        function submitMessage() {
+            const message = document.getElementById('message').value;
+            if (message.trim() === '') {
+                alert('请输入您的悼念或祝福。');
+                return;
+            }
+            alert('您的悼念已提交：\n\n' + message);
+            document.getElementById('message').value = '';
+        }
+    </script>
+</body>
+</html>
